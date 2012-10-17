@@ -1,6 +1,6 @@
 # nimrod.exe c --threads:on -t:-march=i686 -r atomicas.nim -- for win32 mingw
 # otherwise it will compiled for i386 where atomic builtins are not available
-# TODO version for ref, tests
+# TODO test on windows
 
 const
   hasThreadSupport = compileOption("threads")
