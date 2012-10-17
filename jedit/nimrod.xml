@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<!DOCTYPE MODE SYSTEM "xmode.dtd">
+
+<!-- Nimrod mode by Yury Benesh based on Python mode by Slava Pestov. Based on PythonTokenMarker by -->
+<!-- Jonathan Revusky -->
+
+<MODE>
+	<PROPS>
+		<PROPERTY NAME="indentNextLines" VALUE="\s*[^#]{3,}:\s*(#.*)?" />
+		<PROPERTY NAME="indentOpenBrackets" VALUE="{[" />
+		<PROPERTY NAME="indentCloseBrackets" VALUE="}]" />
+		<PROPERTY NAME="unalignedOpenBrackets" VALUE="(" />
+		<PROPERTY NAME="unalignedCloseBrackets" VALUE=")" />
+		<PROPERTY NAME="unindentNextLines" VALUE="^\s*(pass|else\s*:|elif\s.*:|except(\s.*)?:|finally\s*:)\s*(#.*)?$" />
+		<PROPERTY NAME="unindentThisLine" VALUE="^\s*(else|elif\s.*|except(\s.*)?|finally)\s*:\s*(#.*)?" />
+		<PROPERTY NAME="lineComment" VALUE="#" />
+		<PROPERTY NAME="electricKeys" VALUE=":" />
+		<PROPERTY NAME="ignoreWhitespace" VALUE="false" />
+	</PROPS>
+	<RULES IGNORE_CASE="TRUE" HIGHLIGHT_DIGITS="TRUE">
+		<!-- Comment -->
+		<EOL_SPAN TYPE="COMMENT2">##</EOL_SPAN>
+		<EOL_SPAN TYPE="COMMENT1">#</EOL_SPAN>
+
+		<!-- decorator -->
+		<SPAN_REGEXP HASH_CHAR="@" MATCH_TYPE="KEYWORD4" DELEGATE="python::MAIN">
+			<BEGIN>@\w+(?:\.\w+)*\(</BEGIN>
+			<END>\)</END>
+		</SPAN_REGEXP>
+		<MARK_FOLLOWING TYPE="KEYWORD4">@</MARK_FOLLOWING>
+
+		<!-- Triple-quotes -->
+		<SPAN TYPE="LITERAL2" DELEGATE="LITERAL_TWO">
+			<BEGIN>"""</BEGIN>
+			<END>"""</END>
+		</SPAN>
+
+		<SPAN TYPE="LITERAL2" DELEGATE="LITERAL_TWO">
+			<BEGIN>'''</BEGIN>
+			<END>'''</END>
+		</SPAN>
+
+		<!-- Standard literals -->
+		<SPAN TYPE="LITERAL1" DELEGATE="LITERAL_ONE">
+			<BEGIN>"</BEGIN>
+			<END>"</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL1" DELEGATE="LITERAL_ONE">
+			<BEGIN>'</BEGIN>
+			<END>'</END>
+		</SPAN>
+
+		<SEQ TYPE="OPERATOR">=</SEQ>
+		<SEQ TYPE="OPERATOR">!</SEQ>
+		<SEQ TYPE="OPERATOR">&gt;=</SEQ>
+		<SEQ TYPE="OPERATOR">&lt;=</SEQ>
+		<SEQ TYPE="OPERATOR">+</SEQ>
+		<SEQ TYPE="OPERATOR">-</SEQ>
+		<SEQ TYPE="OPERATOR">/</SEQ>
+		<SEQ TYPE="OPERATOR">*</SEQ>
+		<SEQ TYPE="OPERATOR">&gt;</SEQ>
+		<SEQ TYPE="OPERATOR">&lt;</SEQ>
+		<SEQ TYPE="OPERATOR">%</SEQ>
+		<SEQ TYPE="OPERATOR">&amp;</SEQ>
+		<SEQ TYPE="OPERATOR">|</SEQ>
+		<SEQ TYPE="OPERATOR">^</SEQ>
+		<SEQ TYPE="OPERATOR">~</SEQ>
+		<SEQ TYPE="KEYWORD1">:</SEQ>
+
+		<MARK_PREVIOUS TYPE="FUNCTION"
+			MATCH_TYPE="OPERATOR">(</MARK_PREVIOUS>
+		<SEQ TYPE="OPERATOR">)</SEQ>
+
+		<KEYWORDS>
+			<!--  Reserved Words  -->
+			<KEYWORD1>addr</KEYWORD1>
+			<KEYWORD1>and</KEYWORD1>
+			<KEYWORD1>as</KEYWORD1>
+			<KEYWORD1>asm</KEYWORD1>
+			<KEYWORD1>atomic</KEYWORD1>
+			<KEYWORD1>bind</KEYWORD1>
+			<KEYWORD1>block</KEYWORD1>
+			<KEYWORD1>break</KEYWORD1>
+			<KEYWORD1>case</KEYWORD1>
+			<KEYWORD1>cast</KEYWORD1>
+			<KEYWORD1>const</KEYWORD1>
+			<KEYWORD1>continue</KEYWORD1>
+			<KEYWORD1>converter</KEYWORD1>
+			<KEYWORD1>discard</KEYWORD1>
+			<KEYWORD1>distinct</KEYWORD1>
+			<KEYWORD1>div</KEYWORD1>
+			<KEYWORD1>do</KEYWORD1>
+			<KEYWORD1>elif</KEYWORD1>
+			<KEYWORD1>else</KEYWORD1>
+			<KEYWORD1>end</KEYWORD1>
+			<KEYWORD1>enum</KEYWORD1>
+			<KEYWORD1>except</KEYWORD1>
+			<KEYWORD1>export</KEYWORD1>
+			<KEYWORD1>finally</KEYWORD1>
+			<KEYWORD1>for</KEYWORD1>
+			<KEYWORD1>from</KEYWORD1>
+			<KEYWORD1>generic</KEYWORD1>
+			<KEYWORD1>if</KEYWORD1>
+			<KEYWORD1>import</KEYWORD1>
+			<KEYWORD1>in</KEYWORD1>
+			<KEYWORD1>include</KEYWORD1>
+			<KEYWORD1>interface</KEYWORD1>
+			<KEYWORD1>is</KEYWORD1>
+			<KEYWORD1>isnot</KEYWORD1>
+			<KEYWORD1>iterator</KEYWORD1>
+			<KEYWORD1>lambda</KEYWORD1>
+			<KEYWORD1>let</KEYWORD1>
+			<KEYWORD1>macro</KEYWORD1>
+			<KEYWORD1>method</KEYWORD1>
+			<KEYWORD1>mixin</KEYWORD1>
+			<KEYWORD1>mod</KEYWORD1>
+			<KEYWORD1>nil</KEYWORD1>
+			<KEYWORD1>not</KEYWORD1>
+			<KEYWORD1>notin</KEYWORD1>
+			<KEYWORD1>object</KEYWORD1>
+			<KEYWORD1>of</KEYWORD1>
+			<KEYWORD1>or</KEYWORD1>
+			<KEYWORD1>out</KEYWORD1>
+			<KEYWORD1>proc</KEYWORD1>
+			<KEYWORD1>ptr</KEYWORD1>
+			<KEYWORD1>raise</KEYWORD1>
+			<KEYWORD1>ref</KEYWORD1>
+			<KEYWORD1>return</KEYWORD1>
+			<KEYWORD1>shl</KEYWORD1>
+			<KEYWORD1>shr</KEYWORD1>
+			<KEYWORD1>static</KEYWORD1>
+			<KEYWORD1>template</KEYWORD1>
+			<KEYWORD1>try</KEYWORD1>
+			<KEYWORD1>tuple</KEYWORD1>
+			<KEYWORD1>type</KEYWORD1>
+			<KEYWORD1>var</KEYWORD1>
+			<KEYWORD1>when</KEYWORD1>
+			<KEYWORD1>while</KEYWORD1>
+			<KEYWORD1>with</KEYWORD1>
+			<KEYWORD1>without</KEYWORD1>
+			<KEYWORD1>xor</KEYWORD1>
+			<KEYWORD1>yield</KEYWORD1>
+			
+
+
+
+			<!-- builtins -->
+			<KEYWORD2>abs</KEYWORD2>
+
+
+			<!-- exceptions -->
+			<KEYWORD3>ArithmeticError</KEYWORD3>
+
+
+			<KEYWORD3>False</KEYWORD3>
+			<KEYWORD3>Nil</KEYWORD3>
+			<KEYWORD3>True</KEYWORD3>
+		</KEYWORDS>
+	</RULES>
+
+	<!-- rulesets to syntax highlight string interpolation sequences -->
+	<RULES SET="LITERAL_ONE" DEFAULT="LITERAL1" ESCAPE="\">
+		<SEQ_REGEXP HASH_CHAR="%" TYPE="LITERAL4">%[.]?\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+		<SEQ_REGEXP HASH_CHAR="%(" TYPE="LITERAL4">%\([^)]+\)[+ -]?\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+	</RULES>
+	<!-- triple-quoted strings has its own, since it's LITERAL2 by default -->
+	<RULES SET="LITERAL_TWO" DEFAULT="LITERAL2" ESCAPE="\">
+		<SEQ_REGEXP HASH_CHAR="%" TYPE="LITERAL4">%\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+		<SEQ_REGEXP HASH_CHAR="%(" TYPE="LITERAL4">%\([^)]+\)[+ -]?\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>B{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>C{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>E{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>I{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL3">
+			<BEGIN>L{</BEGIN>
+			<END>}</END>
+		</SPAN>
+		<!--
+		<EOL_SPAN AT_WHITESPACE_END="TRUE" DELEGATE="python::MAIN" TYPE="LITERAL3">&gt;&gt;&gt;</EOL_SPAN>
+		<EOL_SPAN AT_WHITESPACE_END="TRUE" DELEGATE="python::MAIN" TYPE="LITERAL3">...</EOL_SPAN>
+		-->
+		<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="LITERAL3">&gt;&gt;&gt;</EOL_SPAN>
+		<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="LITERAL3">...</EOL_SPAN>
+		<MARK_FOLLOWING	TYPE="LITERAL3" AT_WHITESPACE_END="TRUE">@</MARK_FOLLOWING>
+	</RULES>
+</MODE>
+
