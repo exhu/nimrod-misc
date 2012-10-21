@@ -1,0 +1,7 @@
+How to install jEdit mode for Nimrod
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Add line to ~/.jedit/modes/catalog:
+
+<MODE NAME="Nimrod" FILE="nimrod.xml" FILE_NAME_GLOB="*.nim" />
+
