@@ -18,17 +18,17 @@
         <PROPERTY NAME="ignoreWhitespace" VALUE="false" />
     </PROPS>
     
-    <!-- simplified number literals re-->
+    
     <RULES IGNORE_CASE="TRUE" HIGHLIGHT_DIGITS="FALSE" >
-
-        <SEQ_REGEXP TYPE="DIGIT">0[xX][0-9A-Fa-f_]+('[iIuUfF](8|16|32|64))?</SEQ_REGEXP>
-        <SEQ_REGEXP TYPE="DIGIT">0[bB][01_]+('[iIuUfF](8|16|32|64))?</SEQ_REGEXP>
-        <SEQ_REGEXP TYPE="DIGIT">0o[0-7_]+('[iIuUfF](8|16|32|64))?</SEQ_REGEXP>
-        <SEQ_REGEXP TYPE="DIGIT">[0-9_]+(\.[0-9_]+){0,1}([eE][+-][0-9_]+)?('[fF](32|64))?</SEQ_REGEXP>
-        <SEQ_REGEXP TYPE="DIGIT">[0-9_]+('[iIuU](8|16|32|64))?</SEQ_REGEXP>
+ 
+        <!-- simplified number literals re-->
+        <SEQ_REGEXP TYPE="DIGIT" AT_WORD_START="TRUE">0[xX][0-9A-Fa-f_]+('[iIuUfF](8|16|32|64))?</SEQ_REGEXP>
+        <SEQ_REGEXP TYPE="DIGIT" AT_WORD_START="TRUE">0[bB][01_]+('[iIuUfF](8|16|32|64))?</SEQ_REGEXP>
+        <SEQ_REGEXP TYPE="DIGIT" AT_WORD_START="TRUE">0o[0-7_]+('[iIuUfF](8|16|32|64))?</SEQ_REGEXP>
+        <SEQ_REGEXP TYPE="DIGIT" AT_WORD_START="TRUE">[0-9_]+((('[iIuU](8|16|32|64)))|((\.[0-9_]+){0,1}([eE][+-][0-9_]+)?('[fF](32|64))?))?</SEQ_REGEXP>
+        <!-- <SEQ_REGEXP TYPE="DIGIT" AT_WORD_START="TRUE">[0-9_]+(\.[0-9_]+){0,1}([eE][+-][0-9_]+)?('[fF](32|64))?</SEQ_REGEXP> -->
         
-        
-        
+    
         <!-- Comment -->
         <EOL_SPAN TYPE="COMMENT2">##</EOL_SPAN>
         <EOL_SPAN TYPE="COMMENT1">#</EOL_SPAN>
@@ -44,10 +44,13 @@
             <BEGIN>"</BEGIN>
             <END>"</END>
         </SPAN>
+        
+        
         <SPAN TYPE="LITERAL1" DELEGATE="LITERAL_ONE">
             <BEGIN>'</BEGIN>
             <END>'</END>
         </SPAN>
+        
 
         <SEQ TYPE="OPERATOR">=</SEQ>
         <SEQ TYPE="OPERATOR">!</SEQ>
@@ -65,6 +68,7 @@
         <SEQ TYPE="OPERATOR">^</SEQ>
         <SEQ TYPE="OPERATOR">~</SEQ>
         <SEQ TYPE="KEYWORD1">:</SEQ>
+        <SEQ TYPE="OPERATOR">..</SEQ>
 
         <MARK_PREVIOUS TYPE="FUNCTION"
             MATCH_TYPE="OPERATOR">(</MARK_PREVIOUS>
@@ -84,9 +88,9 @@
             <KEYWORD1>cast</KEYWORD1>
             <KEYWORD1>const</KEYWORD1>
             <KEYWORD1>continue</KEYWORD1>
-            <KEYWORD1>converter</KEYWORD1>
+            <KEYWORD2>converter</KEYWORD2>
             <KEYWORD1>discard</KEYWORD1>
-            <KEYWORD1>distinct</KEYWORD1>
+            <KEYWORD2>distinct</KEYWORD2>
             <KEYWORD1>div</KEYWORD1>
             <KEYWORD1>do</KEYWORD1>
             <KEYWORD1>elif</KEYWORD1>
@@ -139,20 +143,62 @@
             <KEYWORD1>without</KEYWORD1>
             <KEYWORD1>xor</KEYWORD1>
             <KEYWORD1>yield</KEYWORD1>
-
-            <!-- TODO add functions and exceptions from system module -->
+            <!-- although not mentioned in the manual as reserved keywords: -->
+            <KEYWORD1>array</KEYWORD1>
+            <KEYWORD1>seq</KEYWORD1>
+            <KEYWORD1>range</KEYWORD1>
+            <KEYWORD1>varargs</KEYWORD1>
+            <KEYWORD1>typedesc</KEYWORD1>
+            
+            <!-- functions, types and exceptions from system module -->
             <!-- builtins -->
             <KEYWORD2>items</KEYWORD2>
-
-
-            <!-- exceptions -->
-            <KEYWORD3>ArithmeticError</KEYWORD3>
-
-
-            <KEYWORD3>False</KEYWORD3>
-            <KEYWORD3>Nil</KEYWORD3>
-            <KEYWORD3>True</KEYWORD3>
+            <KEYWORD2>sizeof</KEYWORD2>
+            <KEYWORD2>ord</KEYWORD2>
+            <KEYWORD2>card</KEYWORD2>
+            <KEYWORD2>incl</KEYWORD2>
+            <KEYWORD2>excl</KEYWORD2>
+            <KEYWORD3>pointer</KEYWORD3>
+            <KEYWORD3>string</KEYWORD3>
+            <KEYWORD3>cstring</KEYWORD3>
+            <KEYWORD3>int64</KEYWORD3>
+            <KEYWORD3>int32</KEYWORD3>
+            <KEYWORD3>int16</KEYWORD3>
+            <KEYWORD3>int8</KEYWORD3>
+            <KEYWORD3>int</KEYWORD3>
+            <KEYWORD3>uint64</KEYWORD3>
+            <KEYWORD3>uint32</KEYWORD3>
+            <KEYWORD3>uint16</KEYWORD3>
+            <KEYWORD3>uint8</KEYWORD3>
+            <KEYWORD3>uint</KEYWORD3>
+            <KEYWORD3>float32</KEYWORD3>
+            <KEYWORD3>float64</KEYWORD3>
+            <KEYWORD3>float</KEYWORD3>
+            <KEYWORD3>bool</KEYWORD3>
+            <KEYWORD3>char</KEYWORD3>
+            
+            <!-- system constants -->
+            <KEYWORD4>false</KEYWORD4>
+            <KEYWORD4>nil</KEYWORD4>
+            <KEYWORD4>true</KEYWORD4>
         </KEYWORDS>
+        
+        <SPAN TYPE="LITERAL3">
+            <BEGIN>{.</BEGIN>
+            <END>.}</END>
+        </SPAN>
+        
+        <SPAN TYPE="LITERAL3">
+            <BEGIN>(.</BEGIN>
+            <END>.)</END>
+        </SPAN>
+        
+        <SPAN TYPE="LITERAL3">
+            <BEGIN>[.</BEGIN>
+            <END>.]</END>
+        </SPAN>
+        
+        
     </RULES>
 
     <!-- rulesets to syntax highlight string interpolation sequences -->
