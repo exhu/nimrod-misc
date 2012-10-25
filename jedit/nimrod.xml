@@ -51,10 +51,6 @@
             <END>'</END>
         </SPAN>
         
-        
-        <MARK_PREVIOUS TYPE="FUNCTION"
-            MATCH_TYPE="OPERATOR">*(</MARK_PREVIOUS>
-        <SEQ TYPE="OPERATOR">)</SEQ>
 
         <SEQ TYPE="OPERATOR">=</SEQ>
         <SEQ TYPE="OPERATOR">!</SEQ>
