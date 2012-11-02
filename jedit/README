@@ -5,3 +5,5 @@ Add line to ~/.jedit/modes/catalog:
 
 <MODE NAME="Nimrod" FILE="nimrod.xml" FILE_NAME_GLOB="*.nim" />
 
+Or copy "catalog" file from here if you don' have any custom modes.
+
