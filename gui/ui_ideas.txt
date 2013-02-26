@@ -1,0 +1,122 @@
+My UI ideas:
+
+
+FontAbstraction:
+    - font provider (enumerate, search etc.
+        - simple like in FLTK
+            - render using X
+        - fontconfig based
+            - render using freetype
+            
+        - GDI
+            - render using windows gdi
+            
+CanvasAbstraction:
+    - draw using primitives
+        - like in FLTK: Xlib, GDI
+    - cairo
+    - opengl ?
+    
+ThemeAbstraction:
+    - basic theme
+        - most efficient implementation without anti-aliasing etc.
+    - cairo theme ?
+    - opengl theme ?
+
+Each widget calls theme to request draw implementation for it, if not found then
+    draws itself.
+
+
+dialog description files, no code inside. Code is denoted by action names.
+
+e.g. using LUA syntax, although not sure if lua scripting is necessary:
+
+Window {
+    name = "main window",
+    
+    layout = FreeLayout {
+        Button {
+            text = "Close",
+            action = "close window", -- requests function pointer associated 
+                            -- with "close window" from current actions provider
+            image = "close_btn"  -- requests resource named "close_btn" from 
+                                -- current resource provider
+        },
+    }   
+    
+}
+
+
+Nimrod source:
+
+var ui: RUIBuilder
+
+var resources = ResourceProvider("my_bin")
+
+var actions = uiActions({"close window" : proc(sender: TObject) = ui.findWindow("main window").close})
+
+ui = uiBuilder("myui_desc.lua", actions, resources)
+
+----------
+
+Resource provider loads bins and registers resources, also dispatches caches:
+
+- strings resource type
+- sprite
+
+---
+Resource bin description (LUA syntax):
+
+Bin {
+    name = "default",
+    strings = "english_strings.lua",
+    sprites = {pilot = "Main/pilot", explosion = "Main/explode"},
+    fonts = {default = "Fonts/alia.ttf", game_over = "Fonts/bold.ttf"},
+}
+
+-----
+UI Context object holds:
+    - current resource provider
+    - current actions provider
+    - current root control/window
+    
+-----------------------------------
+
+
+idea A)
+VisualItem = lightweight ui element that does not respond to keyboard/mouse, 
+                e.g. player sprite 
+    | 
+    VisualInputItem = + keyboard/mouse input
+    
+    
+idea B) Split UI into visual scenegraph and input scenegraph.
+
+VisualNode:
+    - do_draw
+    - do_update
+    - color
+    - angle
+    - scale
+    - effect (shader?)
+    - position
+    - pivot
+    - rect
+    - slaves
+    - master
+    |
+    SpriteNode:    
+        - image
+        - frame
+        
+        
+        
+InputNode:
+    - do_input
+    - slaves (children)
+    - master (parent)
+    |
+    InputNodeUI
+        - rect
+        - focused
+        
