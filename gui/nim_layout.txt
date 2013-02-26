@@ -1,0 +1,15 @@
+Nimrod layout ideas:
+
+Window(
+    name = "main window",
+    
+    layout = FreeLayout {
+        Button {
+            text = "Close",
+            action = "close window", -- requests function pointer associated 
+                            -- with "close window" from current actions provider
+            image = "close_btn"  -- requests resource named "close_btn" from 
+                                -- current resource provider
+        },
+    }   
+)
