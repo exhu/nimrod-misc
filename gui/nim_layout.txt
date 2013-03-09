@@ -13,3 +13,48 @@ Window(
         },
     }   
 )
+
+------
+dockable windows:
+    - modified input scenegraph
+    - modified graphics scenegraph
+
+Designed mainly for OpenGL, so all coordinates are floats,
+only one top window etc.
+
+Window:
+    name: "main"
+    layout: HBox
+    contents:
+        - Button
+            text: "Close"
+            action: "close window"
+            image: "close_btn"
+            
+        - Button
+            text: "Next"
+            action: "next"
+            image: "next_btn"
+            
+        - Group
+            layout: VBox
+            contents:
+                - Checkbox
+            
+            
+            
+----
+UINode:
+    - parent
+    - get_prefered_size
+    - size
+    - position
+    
+UIContainer -> UINode:
+    - layout
+    - contents (contained nodes)
+    
+    
+-----
+Controls graph uses graphics and input graphs.
+

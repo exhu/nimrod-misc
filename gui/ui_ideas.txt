@@ -93,6 +93,7 @@ VisualItem = lightweight ui element that does not respond to keyboard/mouse,
 idea B) Split UI into visual scenegraph and input scenegraph.
 
 VisualNode:
+    - name
     - do_draw
     - do_update
     - color
@@ -101,16 +102,24 @@ VisualNode:
     - effect (shader?)
     - position
     - pivot
-    - rect
+    - size
     - slaves
     - master
+    - visible
     |
     SpriteNode:    
         - image
         - frame
         
+AnchorNode - invisible node to quickly add/remove/group
+    - position
         
+Input: global hotkeys, window shortcuts (e.g. move/resize), default buttons, 
+    control focus
         
+    input graph is the pass of event handling, from top (app window) to 
+    bottom (controls), node can consume event and further handling is stopped.
+    
 InputNode:
     - do_input
     - slaves (children)
