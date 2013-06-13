@@ -146,6 +146,17 @@ IView -- base for control, window contents etc.
 
 IToolTip, IPopupMenu
 
+Allow double-buffering
+
+TGuiUnit = int, float, double for different backends
+
+IGuiDrawApi -- interface to draw using native backend drawing routines, i.e.
+    uses TGuiUnit for all coordinates
+    
+    
+Separate into Backend API and User/Public API. There should be declarative
+drawing api (graph/layer based) and imperative for low-level.
+
 ===============================
 
 
