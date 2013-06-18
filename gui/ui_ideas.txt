@@ -165,7 +165,7 @@ graphics framework:
 Layers [...]
     - objects [...]
         - type
-        - data[...]
+        - instances[...]
         
 Object types:
     - fill rect
