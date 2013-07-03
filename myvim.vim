@@ -1,4 +1,4 @@
-set fileencodings=ucs-bom,utf-8,default,latin1
+set fileencodings=utf-8,ucs-bom,default,latin1
 set guifont=Liberation\ Mono\ 13
 set colorcolumn=80
 set lines=50 columns=165
