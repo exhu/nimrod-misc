@@ -160,6 +160,22 @@ drawing api (graph/layer based) and imperative for low-level.
 ===============================
 
 
+graphics framework:
 
-
- 
+Layers [...]
+    - objects [...]
+        - type
+        - instances[...]
+        
+Object types:
+    - fill rect
+    - image
+    - text
+    - line
+    - rect
+    - round rect
+    - circle
+    - ...
+    
+So having flat hierarchy we can render primitives in bulk, good for opengl.
+Transforms?
