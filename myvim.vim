@@ -7,4 +7,4 @@ set et
 set ai
 set si
 set ts=4
-
+set shiftwidth=4
