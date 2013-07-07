@@ -50,7 +50,7 @@ proc main() =
     discard XMapWindow(dpy, win)
 
     var wmDeleteMessage: TAtom = XInternAtom(dpy, "WM_DELETE_WINDOW", 
-        cast[xlib.TBool](false))
+        xlib.TBool(false))
     discard XSetWMProtocols(dpy, win, addr(wmDeleteMessage), 1)
 
     var cs: PSurface = xlib_surface_create(dpy, win, XDefaultVisual(dpy, 0),
@@ -65,8 +65,7 @@ proc main() =
         elif e.theType == ButtonPress:
             break
         elif e.theType == ClientMessage and 
-            cast[ptr cint]((cast[PXClientMessageEvent](e.addr).data.addr
-                ))[] == cast[cint](wmDeleteMessage):
+            cast[PAtom](e.xclient.data[0].addr)[] == wmDeleteMessage:
                     break
 
     echo "destroying"

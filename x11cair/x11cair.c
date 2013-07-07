@@ -39,6 +39,10 @@ int main()
     int scr;
     GC gc;
 
+    printf("sizeof Atom = %ld, sizeof ulong = %ld, " \
+        "e.xclient.data.l[0] = %ld\n", sizeof(Atom), 
+        sizeof(unsigned long), sizeof(e.xclient.data.l[0]));
+
     if(!(dpy=XOpenDisplay(NULL))) {
         fprintf(stderr, "ERROR: could not open display\n");
         exit(1);
