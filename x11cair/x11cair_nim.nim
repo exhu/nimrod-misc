@@ -1,4 +1,4 @@
-import cairo, cairoxlib, x, xlib, xkb, xkblib
+import cairo, cairoxlib, x, xlib, xkb, xkblib#, cairoft
 
 const
     SIZEX = 320
