@@ -179,3 +179,8 @@ Object types:
     
 So having flat hierarchy we can render primitives in bulk, good for opengl.
 Transforms?
+
+DrawingContext:
+    - drawLayers (retained mode)
+    - getCairo (immediate)
+    - getOpenGL (?)
