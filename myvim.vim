@@ -14,3 +14,4 @@ syntax on
 set colorcolumn=80
 set lines=44 columns=161
 set sessionoptions=buffers,curdir
+set autochdir
